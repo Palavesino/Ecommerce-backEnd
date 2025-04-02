@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { databaseProviders } from './config/database.providers';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [TypeOrmModule.forRoot(databaseProviders)],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter
+    }
+  ]
 })
 export class AppModule {}
