@@ -2,7 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   CreateDateColumn,
   DeleteDateColumn,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
 } from 'typeorm';
 
 export abstract class Base {
@@ -10,16 +11,14 @@ export abstract class Base {
   @ApiProperty({ example: '50436717-8608-4bff-bf41-373f14a8b888' })
   id: string;
 
-  @DeleteDateColumn({
-    name: 'deleted_at',
-    type: 'varchar',
-  })
-  @ApiProperty({ example: null })
-  deletedAt!: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @CreateDateColumn({
-    name: 'created_at',
-    type: 'varchar',
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn({
+    nullable: true,
   })
-  createdAt!: string;
+  deletedAt: Date | null;
 }
