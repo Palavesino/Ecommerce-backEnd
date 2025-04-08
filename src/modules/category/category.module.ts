@@ -6,10 +6,10 @@ import { Category } from '../../domain/entities';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Category]), // Correctamente configurado
+    TypeOrmModule.forFeature([Category]), 
   ],
   controllers: [CategoryController],
   providers: [CategoryService],
-  exports: [CategoryService], // Recomendado exportar si otros módulos lo usarán
+  exports: [CategoryService], 
 })
 export class CategoryModule {}
