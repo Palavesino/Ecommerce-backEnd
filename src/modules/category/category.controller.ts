@@ -1,8 +1,9 @@
 import { Controller } from '@nestjs/common';
-import { BaseController } from 'src/common/bases/base.controller';
-import { CategoryDTO } from 'src/domain/dto/categoryDTO';
-import { Category } from 'src/domain/entities';
+
 import { CategoryService } from './category.service';
+import { BaseController } from '../../common/bases/base.controller';
+import { Category } from '../../domain/entities';
+import { CategoryDTO } from '../../domain/dto';
 
 @Controller('category')
 export class CategoryController extends BaseController<
