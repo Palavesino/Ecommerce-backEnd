@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Base } from '../../common/bases/base.entity';
 import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
-import { OrderDetail } from './order_details.entity';
+import { OrderDetail } from './order_detail.entity';
 
 export enum PaymentStatus {
     PENDING = 'PENDING',

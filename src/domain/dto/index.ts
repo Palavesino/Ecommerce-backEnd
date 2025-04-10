@@ -1,1 +1,2 @@
-export * from "./categoryDTO"
+export * from "./category.dto"
+export * from "./price.dto"
