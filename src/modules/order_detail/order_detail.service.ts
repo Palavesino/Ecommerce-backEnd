@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BaseService } from '../../common/bases/base.service';
-import { CategoryDTO } from '../../domain/dto/category.dto';
-import { Category } from '../../domain/entities';
 import {Repository } from 'typeorm';
+import { OrderDetail } from '../../domain/entities';
+import { OrderDetailDTO } from '../../domain/dto';
 
 @Injectable()
-export class CategoryService extends BaseService<Category, CategoryDTO> {
+export class OrderDetailService  extends BaseService<OrderDetail, OrderDetailDTO> {
     constructor(
-        @InjectRepository(Category) protected repository: Repository<Category>,
+        @InjectRepository(OrderDetail) protected repository: Repository<OrderDetail>,
       ) {
         super(repository);
       }
 }
+
