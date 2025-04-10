@@ -25,7 +25,7 @@ export class Product extends Base {
         name: 'imageUrl',
         type: 'varchar',
         length: 150,
-        nullable: false
+        nullable: true
     })
     @ApiProperty({ example: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81NUYU0UuZJk5FN_C6qdauLhmg6UHjtcBgA&s' })
     imageUrl: string;

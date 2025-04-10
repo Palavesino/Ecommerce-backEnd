@@ -35,7 +35,7 @@ export class Category extends Base {
     availability: boolean;
 
     @ManyToOne(() => Category, (category) => category.childCategories)
-    @JoinColumn({ name: 'idFatherCategory' })
+    @JoinColumn({ name: 'id_father_category' })
     fatherCategory: Category;
 
     @OneToMany(() => Category, (category) => category.fatherCategory, {
