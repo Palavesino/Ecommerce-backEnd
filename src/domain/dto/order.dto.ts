@@ -30,9 +30,10 @@ export class OrderDTO extends FullBaseDto {
     @ApiProperty({
         example: 'Apto 3B',
         description: 'Departamento/Piso (opcional)',
-        nullable: true
+        nullable: true,
+        required: false
     })
-    apartment: string | null;
+    apartment?: string;
 
     @Expose()
     @ApiProperty({
@@ -45,9 +46,10 @@ export class OrderDTO extends FullBaseDto {
     @ApiProperty({
         example: '00:45:00',
         description: 'Tiempo estimado de entrega',
-        nullable: true
+        nullable: true,
+        required: false,
     })
-    estimatedTime: string | null;
+    estimatedTime?: string;
 
     @Expose()
     @ApiProperty({
