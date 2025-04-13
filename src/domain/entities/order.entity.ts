@@ -72,7 +72,7 @@ export class Order extends Base {
         nullable: true
     })
     @ApiProperty({ example: 'Apto 4B', required: false })
-    apartment: string;
+    apartment: string | null;
 
     @Column({
         name: 'phone',
@@ -88,7 +88,7 @@ export class Order extends Base {
         nullable: true
     })
     @ApiProperty({ example: '00:45:00', required: false })
-    estimatedTime: string;
+    estimatedTime: string | null;
 
     @Column({
         name: 'delivery_method',
