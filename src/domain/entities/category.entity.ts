@@ -39,7 +39,7 @@ export class Category extends Base {
     fatherCategory: Category;
 
     @OneToMany(() => Category, (category) => category.fatherCategory, {
-        eager: true
+        eager: false
     })
     childCategories: Category[];
 }

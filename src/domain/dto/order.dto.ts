@@ -33,7 +33,7 @@ export class OrderDTO extends FullBaseDto {
         nullable: true,
         required: false
     })
-    apartment?: string;
+    apartment: string | null;
 
     @Expose()
     @ApiProperty({
@@ -49,7 +49,7 @@ export class OrderDTO extends FullBaseDto {
         nullable: true,
         required: false,
     })
-    estimatedTime?: string;
+    estimatedTime: string | null;
 
     @Expose()
     @ApiProperty({
