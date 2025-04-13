@@ -25,7 +25,6 @@ import { DeepPartial } from 'typeorm';
     @Get()
     async findAll(@Query() query: any): Promise<T[]> {
       try {
-        // Puedes pasar los query params directamente como FindManyOptions
         return await this.service.findAll(query);
       } catch (error) {
         throw ErrorManager.createSignatureError((error as Error).message);

@@ -26,7 +26,12 @@ export class ProductDTO extends FullBaseDto {
         default: true
     })
     availability: boolean;
-
+    @Expose()
+    @ApiProperty({
+        example: 'http//linkImage.com',
+        description: 'Link de la imagen'
+    })
+    imageUrl: string;
     @Expose()
     @ApiProperty({
         example: '00:30:00',
