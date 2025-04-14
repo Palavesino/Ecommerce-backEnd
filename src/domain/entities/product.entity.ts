@@ -24,7 +24,7 @@ export class Product extends Base {
     @Column({
         name: 'imageUrl',
         type: 'varchar',
-        length: 150,
+        length: 400,
         nullable: true
     })
     @ApiProperty({ example: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81NUYU0UuZJk5FN_C6qdauLhmg6UHjtcBgA&s' })
