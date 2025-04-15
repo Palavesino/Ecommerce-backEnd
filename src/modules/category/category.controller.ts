@@ -23,4 +23,13 @@ export class CategoryController extends BaseController<
         }
     }
 
+    @Get('/catalogue')
+    async Catalogue(): Promise<CategoryDTO[]> {
+        try {
+            return await this.service.CategoryCatalogue();
+        } catch (error) {
+            throw ErrorManager.createSignatureError((error as Error).message);
+        }
+    }
+
 }
