@@ -4,8 +4,8 @@ import { BaseService } from '../../common/bases/base.service';
 import {IsNull, Repository } from 'typeorm';
 import { Product } from '../../domain/entities';
 import { ProductDTO } from '../../domain/dto';
-import { ProductMapper } from 'src/domain/mapper/product.mapper';
-import { ErrorManager } from 'src/common/exceptions/error.manager';
+import { ProductMapper } from '../../domain/mapper/product.mapper';
+import { ErrorManager } from '../../common/exceptions/error.manager';
 
 @Injectable()
 export class ProductService  extends BaseService<Product, ProductDTO> {
