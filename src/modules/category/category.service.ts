@@ -26,5 +26,19 @@ export class CategoryService extends BaseService<Category, CategoryDTO> {
           throw ErrorManager.createSignatureError((error as Error).message);
         }
       }
+      async CategoryCatalogue(): Promise<CategoryDTO[]> {
+        try {
+          const categories = await this.repository.find({
+            relations: ['fatherCategory'],
+            where: [
+              { deletedAt: IsNull(), type: "M" },  
+              { deletedAt: IsNull(), type: "P" }   
+            ]
+          });
+          return CategoryMapper.toDTOList(categories);
+        } catch (error) {
+          throw ErrorManager.createSignatureError((error as Error).message);
+        }
+      }
     
 }
