@@ -3,7 +3,7 @@ import { ProductService } from './product.service';
 import { BaseController } from '../../common/bases/base.controller';
 import { Product } from '../../domain/entities';
 import { ProductDTO } from '../../domain/dto';
-import { ErrorManager } from 'src/common/exceptions/error.manager';
+import { ErrorManager } from '../../common/exceptions/error.manager';
 
 @Controller('product')
 export class ProductController extends BaseController<
