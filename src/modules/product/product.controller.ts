@@ -22,6 +22,14 @@ export class ProductController extends BaseController<
       throw ErrorManager.createSignatureError((error as Error).message);
     }
   }
+  @Get('/main')
+  async findAllMainProducts(): Promise<ProductDTO[]> {
+    try {
+      return await this.service.findAllMainProducts();
+    } catch (error) {
+      throw ErrorManager.createSignatureError((error as Error).message);
+    }
+  }
 
 
 }
