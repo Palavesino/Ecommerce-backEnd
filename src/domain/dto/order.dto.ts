@@ -2,21 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
 import { FullBaseDto } from '../../common/dtos';
 import { OrderDetailDTO } from './order_detail.dto';
-
-export enum PaymentStatus {
-    PENDING = 'PENDING',
-    PAID = 'PAID',
-    FAILED = 'FAILED'
-}
-
-export enum OrderStatus {
-    RECEIVED = 'RECEIVED',
-    PREPARING = 'PREPARING',
-    READY = 'READY',
-    DELIVERING = 'DELIVERING',
-    DELIVERED = 'DELIVERED',
-    CANCELLED = 'CANCELLED'
-}
+import { PaymentStatus } from '../enum/Paid';
+import { OrderStatus } from '../enum/OrderStatus';
 
 export class OrderDTO extends FullBaseDto {
     @Expose()
@@ -54,7 +41,7 @@ export class OrderDTO extends FullBaseDto {
     @Expose()
     @ApiProperty({
         enum: PaymentStatus,
-        example: PaymentStatus.PAID,
+        example: PaymentStatus.APPROVED,
         description: 'Estado del pago'
     })
     paid: PaymentStatus;
@@ -90,7 +77,7 @@ export class OrderDTO extends FullBaseDto {
     @Expose()
     @ApiProperty({
         enum: OrderStatus,
-        example: OrderStatus.PREPARING,
+        example: OrderStatus.PREPARATION,
         description: 'Estado actual del pedido'
     })
     state: OrderStatus;
