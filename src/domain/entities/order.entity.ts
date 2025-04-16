@@ -2,21 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Base } from '../../common/bases/base.entity';
 import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { OrderDetail } from './order_detail.entity';
+import { PaymentStatus } from '../enum/Paid';
+import { OrderStatus } from '../enum/OrderStatus';
 
-export enum PaymentStatus {
-    PENDING = 'PENDING',
-    PAID = 'PAID',
-    FAILED = 'FAILED'
-}
 
-export enum OrderStatus {
-    RECEIVED = 'RECEIVED',
-    PREPARING = 'PREPARING',
-    READY = 'READY',
-    DELIVERING = 'DELIVERING',
-    DELIVERED = 'DELIVERED',
-    CANCELLED = 'CANCELLED'
-}
 
 @Entity('user_order')
 export class Order extends Base {
@@ -32,9 +21,9 @@ export class Order extends Base {
         name: 'paid',
         type: 'enum',
         enum: PaymentStatus,
-        default: PaymentStatus.PENDING
+        default: PaymentStatus.IN_PROCESS
     })
-    @ApiProperty({ enum: PaymentStatus, example: PaymentStatus.PENDING })
+    @ApiProperty({ enum: PaymentStatus, example: PaymentStatus.IN_PROCESS })
     paid: PaymentStatus;
 
     @Column({
@@ -102,9 +91,9 @@ export class Order extends Base {
         name: 'state',
         type: 'enum',
         enum: OrderStatus,
-        default: OrderStatus.RECEIVED
+        default: OrderStatus.PENDING
     })
-    @ApiProperty({ enum: OrderStatus, example: OrderStatus.RECEIVED })
+    @ApiProperty({ enum: OrderStatus, example: OrderStatus.PENDING })
     state: OrderStatus;
 
     @Column({
