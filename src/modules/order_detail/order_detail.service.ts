@@ -27,7 +27,7 @@ export class OrderDetailService extends BaseService<OrderDetail, OrderDetailDTO>
 
         if (
           dto.itemProduct &&
-          await this.productRepository.exist({ where: { id: dto.itemProduct.id } })
+          await this.productRepository.exists({ where: { id: dto.itemProduct.id } })
         ) {
           orderDetail.product = ProductMapper.toEntity(dto.itemProduct);
         }
