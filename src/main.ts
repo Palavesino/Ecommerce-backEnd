@@ -29,7 +29,7 @@ async function bootstrap() {
 
   const port = envConfig.PORT;
 
-  await app.listen(port);
+ await app.listen(process.env.PORT || 3000);
   console.log(`Server running on http://localhost:${port}`);
 }
 bootstrap();
