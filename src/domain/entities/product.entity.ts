@@ -29,6 +29,30 @@ export class Product extends Base {
     })
     @ApiProperty({ example: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81NUYU0UuZJk5FN_C6qdauLhmg6UHjtcBgA&s' })
     imageUrl: string;
+
+    @Column({
+        name: 'sell_price',
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
+        transformer: {
+            to: (value: number) => value,
+            from: (value: string) => parseFloat(value),
+        },
+        nullable: false
+    })
+    @ApiProperty({ example: 19.99 })
+    sellPrice: number;
+    @Column({
+        name: 'cost_price',
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
+        nullable: false
+    })
+    @ApiProperty({ example: 8.50 })
+    costPrice: number;
+
     @Column({
         name: 'availability',
         type: 'boolean',
@@ -53,9 +77,9 @@ export class Product extends Base {
         comment: 'Tiempo de cocina (solo para productos manufacturados)'
     })
     @ApiProperty({ example: '00:30:00' })
-    cookingTime: string | null; // En TypeORM usamos string para representar TIME
+    cookingTime: string | null;
 
-    @ManyToOne(() => Category) // Sin referencia inversa
+    @ManyToOne(() => Category)
     @JoinColumn({ name: 'id_category' })
     category: Category;
 

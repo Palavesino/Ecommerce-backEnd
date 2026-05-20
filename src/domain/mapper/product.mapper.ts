@@ -19,12 +19,13 @@ export class ProductMapper {
             dto.availability = entity.availability;
             dto.isManufactured = entity.isManufactured;
             dto.cookingTime = entity.cookingTime;
+            dto.sellPrice = entity.sellPrice;
 
             dto.categoryId = entity.category?.id ;
             
 
             return dto;
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping Product to DTO: ${error.message}`);
         }
     }
@@ -41,6 +42,7 @@ export class ProductMapper {
             entity.availability = dto.availability;
             entity.isManufactured = dto.isManufactured;
             entity.cookingTime = dto.cookingTime;
+            entity.sellPrice = dto.sellPrice;
 
             if (dto.categoryId) {
                 entity.category = new Category();
@@ -48,7 +50,7 @@ export class ProductMapper {
             }
 
             return entity;
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping DTO to Product: ${error.message}`);
         }
     }
@@ -56,7 +58,7 @@ export class ProductMapper {
     static toDTOList(entities: Product[]): ProductDTO[] {
         try {
             return entities.map(entity => this.toDTO(entity));
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping Product list to DTO list: ${error.message}`);
         }
     }
@@ -66,7 +68,7 @@ export class ProductMapper {
             if (!dtos) return [];
 
             return dtos.map(dto => this.toEntity(dto));
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping DTO list to Product list: ${error.message}`);
         }
     }

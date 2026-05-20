@@ -4,9 +4,9 @@ import { BaseService } from '../../common/bases/base.service';
 import { CategoryDTO } from '../../domain/dto/category.dto';
 import { Category } from '../../domain/entities';
 import {Repository } from 'typeorm';
-import { ErrorManager } from 'src/common/exceptions/error.manager';
 import { IsNull } from 'typeorm';
 import { CategoryMapper } from '../../domain/mapper/category.mapper';
+import { ErrorManager } from '../../common/exceptions/error.manager';
 
 @Injectable()
 export class CategoryService extends BaseService<Category, CategoryDTO> {
