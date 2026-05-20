@@ -18,7 +18,9 @@ export class ProductService extends BaseService<Product, ProductDTO> {
   async findAllProducts(): Promise<ProductDTO[]> {
     try {
       const products = await this.repository.find({
-        relations: ['category'],
+        relations: {
+          category: true,
+        },
         where: { deletedAt: IsNull() }
       });
       return ProductMapper.toDTOList(products);
@@ -29,7 +31,9 @@ export class ProductService extends BaseService<Product, ProductDTO> {
   async findAllMainProducts(): Promise<ProductDTO[]> {
     try {
       const products = await this.repository.find({
-        relations: ['category'],
+        relations: {
+          category: true,
+        },
         where: [
           { deletedAt: IsNull(), isManufactured: true },
         ]
