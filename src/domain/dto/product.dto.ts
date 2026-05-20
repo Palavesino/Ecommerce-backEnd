@@ -56,8 +56,8 @@ export class ProductDTO extends FullBaseDto {
 
     @Expose()
     @ApiProperty({
-        type: PriceDTO,
+        example: 8.50,
         description: 'Información de precios del producto'
     })
-    price: PriceDTO;
+    sellPrice: number;
 }

@@ -20,7 +20,7 @@ export class OrderDetailMapper {
             dto.itemProduct = ProductMapper.toDTO(entity.product);
 
             return dto;
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping OrderDetail to DTO: ${error.message}`);
         }
     }
@@ -40,7 +40,7 @@ export class OrderDetailMapper {
             }
 
             return entity;
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping DTO to OrderDetail: ${error.message}`);
         }
     }
@@ -50,7 +50,7 @@ export class OrderDetailMapper {
             if (!entities) return [];
 
             return entities.map(entity => this.toDTO(entity));
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping OrderDetail list to DTO list: ${error.message}`);
         }
     }
@@ -60,7 +60,7 @@ export class OrderDetailMapper {
             if (!dtos) return [];
 
             return dtos.map(dto => this.toEntity(dto));
-        } catch (error) {
+        } catch (error : any) {
             throw ErrorManager.createSignatureError(`Error mapping DTO list to OrderDetail list: ${error.message}`);
         }
     }

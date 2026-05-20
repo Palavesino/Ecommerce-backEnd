@@ -1,4 +1,4 @@
-import { ErrorManager } from "src/common/exceptions/error.manager";
+import { ErrorManager } from "../../common/exceptions/error.manager";
 import { OrderDTO } from "../dto";
 import { Order } from "../entities";
 import { OrderDetailMapper } from "./order_detail.mapper";
@@ -83,7 +83,7 @@ export class OrderMapper {
             if (!dtos) return [];
 
             return dtos.map(dto => this.toEntity(dto));
-        } catch (error) {
+        } catch (error: any) {
             throw ErrorManager.createSignatureError(`Error mapping DTO list to Order list: ${error.message}`);
         }
     }

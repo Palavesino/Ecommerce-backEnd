@@ -37,7 +37,7 @@ export class OrderDetailService extends BaseService<OrderDetail, OrderDetailDTO>
       }
 
       return await this.repository.save(orderDetailList);
-    } catch (e) {
+    } catch (e : any) {
       throw new Error(e.message);
     }
   }

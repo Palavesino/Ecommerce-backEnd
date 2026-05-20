@@ -47,7 +47,7 @@ export class OrderService extends BaseService<Order, OrderDTO> {
       let resultDto = OrderMapper.toDTO(savedOrder);
 
       return resultDto;
-    } catch (e) {
+    } catch (e: any) {
       throw new Error('Error saving order: ' + e.message);
     }
   }
