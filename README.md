@@ -1,101 +1,175 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# El Buen Sabor — Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST desarrollada con NestJS y TypeScript para el ecommerce de restaurante. Gestiona productos, categorías, pedidos y pagos con Mercado Pago.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## Tecnologías
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+| Tecnología | Uso |
+|---|---|
+| NestJS | Framework principal |
+| TypeScript | Lenguaje |
+| TypeORM | ORM para base de datos |
+| PostgreSQL (Neon) | Base de datos en la nube |
+| Mercado Pago SDK | Integración de pagos |
+| Swagger | Documentación de la API |
+| JWT | Autenticación |
+| AWS S3 | Almacenamiento de imágenes |
 
-## Project setup
+---
 
-```bash
-$ npm install
+## Estructura del proyecto
+
+```
+src/
+├── common/
+│   ├── bases/
+│   │   ├── base.controller.ts
+│   │   ├── base.entity.ts
+│   │   └── base.service.ts
+│   ├── dtos/
+│   │   ├── base-full.dto.ts
+│   │   ├── base-short.dto.ts
+│   │   ├── index.ts
+│   │   └── pagination-common.dto.ts
+│   └── exceptions/
+│       ├── error.manager.ts
+│       └── http-exception.filter.ts
+├── config/
+│   ├── database.providers.ts
+│   └── envs.ts
+├── domain/
+│   ├── dto/
+│   │   ├── category.dto.ts
+│   │   ├── index.ts
+│   │   ├── order_detail.dto.ts
+│   │   ├── order.dto.ts
+│   │   ├── price.dto.ts
+│   │   └── product.dto.ts
+│   ├── entities/
+│   │   ├── category.entity.ts
+│   │   ├── index.ts
+│   │   ├── order_detail.entity.ts
+│   │   ├── order.entity.ts
+│   │   └── product.entity.ts
+│   ├── enum/
+│   │   ├── OrderStatus.ts
+│   │   └── Paid.ts
+│   └── mapper/
+│       ├── category.mapper.ts
+│       ├── order_detail.mapper.ts
+│       ├── order.mapper.ts
+│       └── product.mapper.ts
+└── modules/
+    ├── category/
+    ├── mercadopago/
+    ├── order/
+    ├── order_detail/
+    ├── product/
+    ├── index.ts
+    └── module.modules.ts
 ```
 
-## Compile and run the project
+---
+
+## Instalación
 
 ```bash
-# development
-$ npm run start
+# Clonar el repositorio
+git clone <url-del-repo>
+cd backend
 
-# watch mode
-$ npm run start:dev
+# Instalar dependencias
+npm install
 
-# production mode
-$ npm run start:prod
+# Iniciar en desarrollo
+npm run start:dev
 ```
 
-## Run tests
+---
+
+## Variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto:
+
+```env
+PORT=3000
+NODE_ENV=development
+
+# Base de datos (PostgreSQL — Neon)
+HOST=your-neon-host
+DB_PORT=5432
+DB_USERNAME=your-username
+DB_PASSWORD=your-password
+DB_NAME=your-dbname
+
+# Swagger
+SWAGGER_PATH=/api/docs
+SWAGGER_PASSWORD=your-swagger-password
+
+# AWS S3
+S3_ACCESS_KEY_ID=your-access-key
+S3_SECRET_ACCESS_KEY=your-secret-key
+S3_REGION=sa-east-1
+S3_BUCKET_NAME=your-bucket-name
+
+# JWT
+JWT_SECRET=your-jwt-secret
+JWT_REFRESH_SECRET=your-jwt-refresh-secret
+
+# Mercado Pago
+MP_ACCESS_TOKEN=your-mp-access-token
+
+# Frontend
+FRONTEND_URL=https://your-frontend-url.vercel.app
+```
+
+---
+
+## Endpoints principales
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/api/category/catalogue` | Categorías con subcategorías |
+| GET | `/api/price/p/:id` | Producto por ID con precio |
+| POST | `/api/order` | Crear pedido |
+| POST | `/api/mercadopago/create-preference` | Crear preferencia de pago MP |
+
+La documentación completa de la API está disponible en `/api/docs` (requiere contraseña definida en `SWAGGER_PASSWORD`).
+
+---
+
+## Integración Mercado Pago
+
+El módulo `mercadopago` recibe el total del pedido desde el frontend y genera una preferencia de pago usando el SDK oficial de MP.
+
+```
+POST /api/mercadopago/create-preference
+Body: { "total": 8010 }
+Response: { "preferenceId": "...", "checkoutUrl": "..." }
+```
+
+El `checkoutUrl` devuelto corresponde a `sandbox_init_point` en modo prueba y a `init_point` en producción. Para pasar a producción reemplazá el `MP_ACCESS_TOKEN` por el token productivo y cambiá `sandbox_init_point` por `init_point` en el service.
+
+---
+
+## Base de datos
+
+PostgreSQL alojado en [Neon](https://neon.tech) (serverless). La conexión se configura en `config/database.providers.ts` usando las variables de entorno. TypeORM gestiona las migraciones y entidades automáticamente con `synchronize: true` en desarrollo.
+
+---
+
+## Scripts disponibles
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start          # Producción
+npm run start:dev      # Desarrollo con hot reload
+npm run start:debug    # Debug mode
+npm run build          # Compilar
+npm run lint           # Linter
+npm run test           # Tests unitarios
+npm run test:e2e       # Tests end-to-end
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-
-## Link de FrontEnd 
+## Link de FrontEnd  
 - [FrontEnd](https://github.com/Palavesino/Ecommerce-frontEnd)
