@@ -25,6 +25,8 @@ const enVarsSchema = joi
     S3_REGION: joi.string().allow(),
     S3_BUCKET_NAME: joi.string().allow(),
     BLOB_READ_WRITE_TOKEN: joi.string().allow(),
+    MP_ACCESS_TOKEN: joi.string().allow(),
+    FRONTEND_URL: joi.string().default('localhost:5173'),
   })
   .unknown()
   .required(); // unknown() permite que se añadan variables de entorno no definidas en el esquema
@@ -54,6 +56,8 @@ interface EnvVars {
   S3_REGION: string;
   S3_BUCKET_NAME: string;
   BLOB_READ_WRITE_TOKEN: string;
+  MP_ACCESS_TOKEN: string;
+  FRONTEND_URL: string;
 }
 
 //Exportamos las envs validadas
@@ -75,6 +79,8 @@ export const envConfig: EnvVars = {
   S3_REGION: envVars.S3_REGION,
   S3_BUCKET_NAME: envVars.S3_BUCKET_NAME,
   BLOB_READ_WRITE_TOKEN: envVars.BLOB_READ_WRITE_TOKEN,
+  MP_ACCESS_TOKEN: envVars.MP_ACCESS_TOKEN,
+  FRONTEND_URL: envVars.FRONTEND_URL,
 };
 
 

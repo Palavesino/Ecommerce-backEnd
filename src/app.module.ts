@@ -4,9 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
 import { ModulesModule } from './modules/module.modules';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(databaseProviders),ModulesModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), TypeOrmModule.forRoot(databaseProviders), ModulesModule],
   controllers: [],
   providers: [
     {
@@ -15,4 +16,4 @@ import { ModulesModule } from './modules/module.modules';
     }
   ]
 })
-export class AppModule {}
+export class AppModule { }
